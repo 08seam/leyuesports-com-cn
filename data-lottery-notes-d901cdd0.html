@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>中国体彩 – 数据查询与工具 | data-lottery.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(145deg, #fce7c8 0%, #f8d5a3 50%, #f2c48d 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem 1rem;
+            color: #2b2b2b;
+            line-height: 1.6;
+        }
+
+        .card {
+            max-width: 920px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 40px;
+            box-shadow: 0 20px 40px rgba(150, 90, 30, 0.18);
+            padding: 2.8rem 2.6rem;
+            transition: all 0.2s ease;
+        }
+
+        @media (max-width: 600px) {
+            .card {
+                padding: 2rem 1.6rem;
+                border-radius: 28px;
+            }
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: -0.02em;
+            color: #592c1a;
+            margin-bottom: 0.3rem;
+            line-height: 1.2;
+        }
+
+        .subhead {
+            font-size: 1rem;
+            color: #7a5540;
+            margin-bottom: 2rem;
+            border-left: 4px solid #e3a56d;
+            padding-left: 1rem;
+            background: #fdf6ed;
+            border-radius: 0 12px 12px 0;
+            display: inline-block;
+            padding: 0.5rem 1.2rem;
+        }
+
+        .hero-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hero-text {
+            flex: 2;
+            min-width: 240px;
+        }
+
+        .hero-text p {
+            margin-bottom: 1.2rem;
+            font-size: 1rem;
+            color: #3f2e24;
+        }
+
+        .stat-badge {
+            flex: 1;
+            min-width: 150px;
+            background: #fef5ea;
+            border-radius: 28px;
+            padding: 1.2rem 1.4rem;
+            text-align: center;
+            border: 1px solid #edd5bb;
+        }
+
+        .stat-badge span {
+            display: block;
+            font-size: 0.8rem;
+            color: #7a5b44;
+            letter-spacing: 0.3px;
+        }
+
+        .stat-badge strong {
+            font-size: 1.5rem;
+            color: #592c1a;
+        }
+
+        .highlight-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem;
+            margin: 2rem 0 1.6rem;
+        }
+
+        @media (max-width: 540px) {
+            .highlight-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .highlight-item {
+            background: #faf3eb;
+            border-radius: 24px;
+            padding: 1.2rem 1.4rem;
+            transition: background 0.2s;
+        }
+
+        .highlight-item h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4d2c1b;
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight-item p {
+            font-size: 0.92rem;
+            color: #5f4435;
+        }
+
+        .scenario-block {
+            background: #f5ede4;
+            border-radius: 28px;
+            padding: 1.6rem 1.8rem;
+            margin: 1.8rem 0 1.4rem;
+        }
+
+        .scenario-block h2 {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #4d2c1b;
+            margin-bottom: 0.8rem;
+        }
+
+        .scenario-list {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.8rem;
+        }
+
+        .scenario-list li {
+            position: relative;
+            padding-left: 1.2rem;
+            font-size: 0.95rem;
+            color: #3f2e24;
+        }
+
+        .scenario-list li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: #b87c4f;
+        }
+
+        .faq-mini {
+            margin-top: 1.8rem;
+            border-top: 1px solid #e7d6c6;
+            padding-top: 1.5rem;
+        }
+
+        .faq-mini details {
+            margin-bottom: 0.8rem;
+            background: #faf5ef;
+            border-radius: 18px;
+            padding: 0.5rem 1.2rem;
+            cursor: pointer;
+        }
+
+        .faq-mini summary {
+            font-weight: 500;
+            color: #4d2c1b;
+            padding: 0.4rem 0;
+            outline: none;
+        }
+
+        .faq-mini details p {
+            font-size: 0.92rem;
+            color: #5f4435;
+            padding: 0.2rem 0 0.8rem 0;
+        }
+
+        .button-note {
+            display: inline-flex;
+            align-items: center;
+            background: #592c1a;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.95rem;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            text-decoration: none;
+            margin: 1.2rem 0 0.4rem;
+            transition: background 0.2s, transform 0.1s;
+            letter-spacing: 0.01em;
+        }
+
+        .button-note:hover {
+            background: #7a3f25;
+            transform: scale(1.02);
+        }
+
+        .button-note:active {
+            transform: scale(0.97);
+        }
+
+        .inline-link {
+            color: #a05f34;
+            font-weight: 600;
+            text-decoration: none;
+            border-bottom: 2px solid #e3b088;
+            transition: border-color 0.15s;
+        }
+
+        .inline-link:hover {
+            border-bottom-color: #592c1a;
+        }
+
+        .footnote {
+            margin-top: 2rem;
+            font-size: 0.82rem;
+            color: #7a6557;
+            border-top: 1px solid #e7d6c6;
+            padding-top: 1.2rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 0.5rem;
+        }
+
+        .footnote a {
+            color: #7a5b44;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #d4b69b;
+        }
+
+        .footnote a:hover {
+            color: #3f2e24;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>中国体彩 · 数据与工具</h1>
+        <div class="subhead">data-lottery.com — 快速理解网站用途</div>
+
+        <div class="hero-wrap">
+            <div class="hero-text">
+                <p>如果你是第一次来到这个网站，希望用最短时间判断它是否对你有用：<strong>data-lottery.com</strong> 围绕<a href="https://data-lottery.com" class="inline-link">中国体彩</a>提供历史开奖号码、统计趋势以及辅助分析工具，不涉及任何购彩或支付环节。页面简洁，数据每日更新，适合习惯自己查阅核对、不依赖第三方推送的彩友。</p>
+                <p>网站既不预测开奖结果，也不提供“必中”方案，而是将公开数据整理成便于检索和对比的格式，帮助你基于事实做判断。</p>
+            </div>
+            <div class="stat-badge">
+                <strong>数据·无算法</strong>
+                <span>仅整理官方公开号码<br>不含预测/推荐</span>
+            </div>
+        </div>
+
+        <div class="highlight-grid">
+            <div class="highlight-item">
+                <h3>📊 多彩种覆盖</h3>
+                <p>大乐透、排列三、排列五、七星彩等主流玩法历史期次均可按日期或期号筛选。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>📈 简易趋势视图</h3>
+                <p>提供号码出现频次、奇偶比、区间分布等基础统计，不包装成复杂指标。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>🔍 快速定位</h3>
+                <p>支持模糊查询与条件组合，几秒内找到特定号码组合的历史出现情况。</p>
+            </div>
+            <div class="highlight-item">
+                <h3>📱 响应界面</h3>
+                <p>手机、平板、桌面均可正常浏览表格，无需缩放或左右滑动。</p>
+            </div>
+        </div>
+
+        <div class="scenario-block">
+            <h2>常见使用场景</h2>
+            <ul class="scenario-list">
+                <li>核对历史开奖号码，避免记错或混淆期次</li>
+                <li>分析个人常用号码在过往开奖中的出现频率</li>
+                <li>了解不同彩种近期冷热号分布（仅做参考）</li>
+                <li>导出或截图具体期号数据，用于个人记录</li>
+                <li>快速对比不同年份同期号码走势</li>
+            </ul>
+        </div>
+
+        <div class="faq-mini">
+            <details>
+                <summary>这个网站和官方体彩网有什么关系？</summary>
+                <p>没有直接隶属关系。data-lottery.com 是第三方数据整理站点，数据来源于公开可查的官方开奖公告，本站不代购、不销售、不设奖池。建议将 <a href="https://data-lottery.com" class="inline-link">中国体彩</a> 数据作为参考之一，最终以官方发布为准。</p>
+            </details>
+            <details>
+                <summary>需要注册或付费吗？</summary>
+                <p>目前所有数据查询和统计功能均免费开放，无需注册。网站不含付费会员或隐藏收费项目。</p>
+            </details>
+            <details>
+                <summary>数据更新频率如何？</summary>
+                <p>通常在每个开奖日公布后数小时内同步更新。如遇延迟，请参考体彩官方公告。</p>
+            </details>
+        </div>
+
+        <a href="https://data-lottery.com" class="button-note">中国体彩</a>
+
+        <div class="footnote">
+            <span>仅做数据参考 · 理性对待</span>
+            <span><a href="https://data-lottery.com">中国体彩</a> 非官方平台</span>
+        </div>
+    </div>
+</body>
+</html>
