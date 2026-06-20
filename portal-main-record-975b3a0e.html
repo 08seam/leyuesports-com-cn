@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 资料整理手记</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #faf8f2;
+            font-family: 'Georgia', 'Times New Roman', '宋体', serif;
+            color: #2e2a24;
+            line-height: 1.7;
+            padding: 0 1.2rem;
+        }
+
+        .page {
+            max-width: 820px;
+            margin: 2.4rem auto;
+            background: #fffdf7;
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.04), 0 8px 28px rgba(120, 100, 70, 0.08);
+            border-radius: 2px;
+            padding: 2.8rem 2.4rem 3rem;
+        }
+
+        /* hero 横幅 —— 更像杂志扉页 */
+        .hero {
+            border-bottom: 1px solid #e3d9cb;
+            padding-bottom: 2rem;
+            margin-bottom: 2.2rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 400;
+            letter-spacing: 6px;
+            color: #4a3f32;
+            margin-top: 0.2rem;
+            margin-bottom: 0.6rem;
+            line-height: 1.2;
+            word-break: keep-all;
+        }
+
+        .hero small {
+            display: block;
+            font-size: 0.9rem;
+            color: #8f8170;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 0.4rem;
+            font-family: 'Arial', sans-serif;
+            font-weight: 300;
+        }
+
+        .hero .subhead {
+            font-size: 1.05rem;
+            font-style: italic;
+            color: #7c6f5e;
+            margin-top: 0.3rem;
+            border-top: 1px dotted #d6ccbd;
+            padding-top: 1.2rem;
+            display: inline-block;
+        }
+
+        /* 正文排版 */
+        p, .intro-text {
+            margin-bottom: 1.6rem;
+            font-size: 1.02rem;
+            text-align: justify;
+        }
+
+        .section-title {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #5a4d3b;
+            border-left: 4px solid #bbaa94;
+            padding-left: 0.9rem;
+            margin: 2.2rem 0 0.8rem 0;
+            letter-spacing: 1px;
+        }
+
+        /* 引用 / 提示框 风格 */
+        .note-box {
+            background: #f3efe8;
+            border-left: 5px solid #b6a492;
+            padding: 1.2rem 1.6rem;
+            margin: 1.8rem 0 2rem;
+            font-size: 0.98rem;
+            color: #3f362d;
+            border-radius: 0 6px 6px 0;
+        }
+
+        .note-box strong {
+            color: #4d3c28;
+            font-weight: 600;
+        }
+
+        .note-box a {
+            color: #735f48;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+            text-decoration-color: #cbb9a6;
+            font-weight: 500;
+        }
+
+        .note-box a:hover {
+            color: #2f241b;
+            text-decoration-color: #735f48;
+        }
+
+        .feature-list {
+            padding-left: 1.4rem;
+            margin: 1rem 0 1.8rem;
+        }
+
+        .feature-list li {
+            margin-bottom: 0.75rem;
+            list-style-type: none;
+            position: relative;
+            padding-left: 1.6rem;
+        }
+
+        .feature-list li::before {
+            content: "⦿";
+            position: absolute;
+            left: 0;
+            color: #a38f78;
+            font-size: 0.9rem;
+        }
+
+        .faq-item {
+            margin: 1.4rem 0 1.6rem;
+            padding: 0.8rem 1rem;
+            border: 1px solid #e9dfd3;
+            background: #fbf9f4;
+            border-radius: 4px;
+        }
+
+        .faq-item q {
+            font-weight: 600;
+            color: #574a38;
+            display: block;
+            margin-bottom: 0.4rem;
+            font-style: normal;
+        }
+
+        .faq-item p {
+            margin-bottom: 0;
+            font-size: 0.96rem;
+        }
+
+        /* 尾页 */
+        .footer-note {
+            margin-top: 2.8rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #e1d6c7;
+            text-align: center;
+            font-size: 0.9rem;
+            color: #7e7162;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-note a {
+            color: #6a5b48;
+            text-decoration: underline wavy #d4c5b2 1px;
+            text-underline-offset: 4px;
+        }
+
+        .footer-note a:hover {
+            color: #2f241b;
+            text-decoration-color: #6a5b48;
+        }
+
+        .sig {
+            margin-top: 0.8rem;
+            font-size: 0.8rem;
+            color: #b1a18e;
+        }
+
+        /* 响应式 */
+        @media (max-width: 580px) {
+            .page {
+                padding: 1.6rem 1.2rem 2rem;
+                margin: 1rem auto;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+                letter-spacing: 4px;
+            }
+            .section-title {
+                font-size: 1.15rem;
+            }
+            .note-box {
+                padding: 1rem 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+
+        <!-- hero -->
+        <div class="hero">
+            <h1>爱游戏</h1>
+            <small>资料索引 · 信息整理</small>
+            <div class="subhead">从日常笔记到专题梳理</div>
+        </div>
+
+        <!-- 背景说明 -->
+        <p>
+            一份关于游戏资讯与内容的整理笔记。不追求快讯速递，更在意素材的条理和可溯性——把散落在各处的讨论、报道、更新说明收集起来，按主题重新梳理。这个页面就是围绕<strong>「爱游戏」</strong>这一线索所做的索引尝试。
+        </p>
+
+        <!-- 三段式自然介绍，杂志专题感 -->
+        <div class="section-title">一、信息归档的思路</div>
+        <p>
+            游戏相关的资料越来越庞杂：版本日志、社区讨论、媒体评测、活动公告……如果只是简单收藏，回头再找往往要花不少时间。所以试着用一种更接近「专题册」的方式去整理——给每类内容一个相对固定的位置，再通过关键词和日期做串联。比如把最近半年的版本更新说明集中到一份笔记里，标注好每次改动要点，方便对比。
+        </p>
+
+        <div class="section-title">二、日常使用的场景</div>
+        <p>
+            日常翻看时，通常是从一份摘要入手。例如某个新机制上线后，会把玩家反馈、开发组说明、相关数据变化放在一起，形成一段简明记录。这样既保留原始信息，也便于之后补充。如果你也有整理的习惯，或许会发现这种「卡片+备注」的方式挺顺手。
+        </p>
+        <ul class="feature-list">
+            <li>按主题分类，而非单纯按时间排序</li>
+            <li>保留原文链接或出处，方便回溯核实</li>
+            <li>定期合并重复条目，保持索引简洁</li>
+        </ul>
+
+        <div class="section-title">三、分享与协作</div>
+        <p>
+            部分整理好的专题会以页面形式分享出来。如果你对某个内容感兴趣，或者想一起补充某个方向的资料，可以顺手把链接或片段发过来。整理本身也是一个慢慢生长的过程，不必一步到位。
+        </p>
+
+        <!-- 引用 / 提示框 —— 自然嵌入链接 -->
+        <div class="note-box">
+            <strong>📌 专题索引入口</strong><br>
+            关于游戏资讯、版本动向、社区讨论的综合整理页面，可参考 <a href="https://portal-main-i-game.com.cn">爱游戏</a> 中的资料归档部分。内容持续更新，结构随素材调整。
+        </div>
+
+        <!-- FAQ 摘要 -->
+        <div class="faq-item">
+            <q>这个页面和主站是什么关系？</q>
+            <p>可以把这里看作一个由日常笔记延伸出的整理页，主站 <a href="https://portal-main-i-game.com.cn" style="text-decoration:underline; color:#6a5b48;">爱游戏</a> 则承载更完整的分类和检索功能。两者内容方向一致，只是呈现粒度不同。</p>
+        </div>
+
+        <div class="faq-item">
+            <q>资料更新的频率如何？</q>
+            <p>没有固定周期，主要看游戏动态和整理精力。有时一周会补充两三则笔记，有时隔一两周才更新。但每次更新都会在索引页留下标记。</p>
+        </div>
+
+        <!-- 页尾访问提示 -->
+        <div class="footer-note">
+            <p>如需浏览更完整的资料结构，可直接访问<a href="https://portal-main-i-game.com.cn">爱游戏</a>。</p>
+            <p class="sig">—— 整理手记 · 持续修订 ——</p>
+        </div>
+
+    </div>
+</body>
+</html>
