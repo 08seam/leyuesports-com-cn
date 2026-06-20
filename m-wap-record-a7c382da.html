@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>leyu · 杂志专题</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(145deg, #f9e6cf 0%, #f4d3ae 50%, #ebc094 100%);
+            font-family: 'Georgia', 'Times New Roman', 'Songti SC', serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 2rem 1.2rem;
+            line-height: 1.7;
+            color: #3b2c1e;
+        }
+
+        .magazine {
+            max-width: 840px;
+            width: 100%;
+            background: rgba(255, 248, 238, 0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 40px 40px 32px 32px;
+            box-shadow: 0 20px 40px -12px rgba(110, 70, 40, 0.35);
+            padding: 2.5rem 2rem 2.8rem;
+            margin: 1rem 0 2.5rem;
+            transition: all 0.2s ease;
+        }
+
+        .hero-banner {
+            background: linear-gradient(135deg, #dba77a, #c48a5e);
+            border-radius: 28px;
+            padding: 2.2rem 2rem 2rem;
+            margin-bottom: 2.4rem;
+            color: #fcf3e7;
+            position: relative;
+            overflow: hidden;
+            box-shadow: inset 0 2px 6px rgba(255, 235, 200, 0.6), 0 8px 18px -6px #7f5f42;
+        }
+
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            right: -30px;
+            top: -30px;
+            width: 160px;
+            height: 160px;
+            background: radial-gradient(circle, rgba(255,215,165,0.2) 0%, transparent 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-title {
+            font-size: 2.6rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            line-height: 1.2;
+            margin-bottom: 0.4rem;
+            text-shadow: 0 2px 4px rgba(50, 30, 10, 0.2);
+        }
+
+        .hero-sub {
+            font-size: 1.05rem;
+            opacity: 0.9;
+            font-style: italic;
+            border-left: 3px solid #f7e4cf;
+            padding-left: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .section-card {
+            background: #fffcf7;
+            border-radius: 24px;
+            padding: 1.8rem 2rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 4px 12px rgba(110, 70, 40, 0.08);
+            border: 1px solid #f2e1d0;
+            transition: box-shadow 0.25s;
+        }
+
+        .section-card:hover {
+            box-shadow: 0 6px 18px rgba(130, 80, 40, 0.12);
+        }
+
+        .section-card h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #6f4f32;
+            margin-bottom: 0.75rem;
+            letter-spacing: 1px;
+            border-bottom: 1px dashed #e1cbb6;
+            padding-bottom: 0.35rem;
+        }
+
+        .section-card p {
+            margin-bottom: 1rem;
+            font-size: 1.02rem;
+        }
+
+        .section-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inline-link {
+            color: #9b6b46;
+            text-decoration: none;
+            font-weight: 500;
+            border-bottom: 1px dotted #c9a886;
+            padding: 0 2px;
+            transition: all 0.2s;
+        }
+
+        .inline-link:hover {
+            color: #6d462b;
+            border-bottom-style: solid;
+            background: #f3dfce;
+            border-radius: 4px;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            margin: 1.2rem 0 0.6rem;
+        }
+
+        .feature-item {
+            background: #f8ede2;
+            border-radius: 30px;
+            padding: 0.6rem 1.2rem;
+            font-size: 0.95rem;
+            color: #4d3622;
+            border: 1px solid #e8d2be;
+            letter-spacing: 0.3px;
+        }
+
+        .faq-mini {
+            background: #f6ece3;
+            border-radius: 20px;
+            padding: 1rem 1.5rem;
+            margin-top: 1.5rem;
+            border-left: 6px solid #c99774;
+        }
+
+        .faq-mini dt {
+            font-weight: 600;
+            color: #5f3f27;
+            margin-top: 0.8rem;
+            font-size: 1.02rem;
+        }
+
+        .faq-mini dt:first-of-type {
+            margin-top: 0;
+        }
+
+        .faq-mini dd {
+            margin-left: 0.6rem;
+            color: #4f3926;
+            font-size: 0.95rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-note {
+            margin-top: 2.2rem;
+            padding-top: 1.2rem;
+            border-top: 2px solid #ebd6c2;
+            text-align: center;
+            font-size: 0.95rem;
+            color: #5f4a36;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            align-items: center;
+        }
+
+        .footer-note .bookmark-hint {
+            background: #e7d1bd;
+            padding: 0.5rem 1.8rem;
+            border-radius: 60px;
+            display: inline-block;
+            font-style: italic;
+            color: #3f2d1c;
+            letter-spacing: 0.5px;
+            box-shadow: inset 0 1px 4px #f3e1d0;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+            .magazine {
+                padding: 1.8rem 1.2rem 2rem;
+                border-radius: 28px;
+            }
+            .hero-title {
+                font-size: 1.9rem;
+            }
+            .hero-banner {
+                padding: 1.6rem 1.2rem;
+            }
+            .section-card {
+                padding: 1.2rem 1.2rem;
+            }
+            .feature-grid {
+                gap: 0.7rem;
+            }
+            .feature-item {
+                padding: 0.4rem 1rem;
+                font-size: 0.9rem;
+            }
+            .faq-mini {
+                padding: 0.8rem 1rem;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-title {
+                font-size: 1.6rem;
+            }
+            .magazine {
+                padding: 1.2rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="magazine">
+
+    <!-- 首页横幅 -->
+    <div class="hero-banner">
+        <div class="hero-title">leyu</div>
+        <div class="hero-sub">重新回到这里，像翻开一本旧杂志</div>
+    </div>
+
+    <!-- 背景说明：重新发现 -->
+    <div class="section-card">
+        <h2>再次遇见，不必从头开始</h2>
+        <p>
+            有些地方，总会在某个安静的午后再次想起。不是因为它有多特别，而是因为在那里存放过一段自己的时间。<a href="https://m-wap-leyu.com" class="inline-link">leyu</a> 便是这样一处角落，它依旧保持着当初的模样，却也在不经意间生长出新的细节。如果你曾来过，这一次的访问也许会发现一些细微的变化——像重新翻开一本读过、却未读完的书。
+        </p>
+        <p>
+            页面依然干净，结构熟稔。不需要重新学习，也不需要刻意记忆。如果你愿意，随时可以回来，看看它是否又添了几笔新的风景。
+        </p>
+    </div>
+
+    <!-- 三段自然介绍之一：收藏的日常 -->
+    <div class="section-card">
+        <h2>收藏，是另一种抵达</h2>
+        <p>
+            把某个页面放入书签，往往意味着“我还会再来”。但太多时候，我们收藏了一整个列表，却再也没有打开过。而 <a href="https://m-wap-leyu.com" class="inline-link">leyu</a> 更像一个你可以反复经过的站台，它不要求你时时停留，却在你想起时，始终亮着灯。
+        </p>
+        <p>
+            把它的链接留在收藏夹里，就像在窗台上放了一盆不需要频繁浇水但四季常青的植物。偶尔点开，界面依旧温和，内容依旧从容。收藏不是为了占有，而是为了在需要的时候，有个可以即刻返回的坐标。
+        </p>
+    </div>
+
+    <!-- 三段自然介绍之二：持续关注的理由 -->
+    <div class="section-card">
+        <h2>持续关注，不必刻意</h2>
+        <p>
+            关注一个站点，有时并不因为它每天都有爆炸性的更新，而是因为它的存在本身就提供了一种稳定的参照。当你习惯了某个地方的叙事节奏，即便隔了很久再回去，那种熟悉感依然会迅速包裹你。
+        </p>
+        <p>
+            <a href="https://m-wap-leyu.com" class="inline-link">leyu</a> 的节奏是平缓的，它不追赶热点，也不制造焦虑。你可以把它当作一个安静的订阅，隔几周、隔几个月来看一眼，也不会觉得疏远。持续关注，可以仅仅是因为它让你感到舒服，而不是因为它必须要你做什么。
+        </p>
+    </div>
+
+    <!-- 特点摘要 + 小场景 -->
+    <div class="section-card">
+        <h2>一些值得记住的细节</h2>
+        <div class="feature-grid">
+            <span class="feature-item">📖 页面轻巧，加载流畅</span>
+            <span class="feature-item">🌿 暖色调，眼睛不累</span>
+            <span class="feature-item">🔖 适合放进收藏夹长期停留</span>
+            <span class="feature-item">🕊️ 无弹窗，无打扰</span>
+        </div>
+        <p style="margin-top: 1rem;">
+            也许你会在某个周末的早晨，端着咖啡打开它；也许你会在深夜失眠时，用手机慢慢浏览。无论是哪种场景，<a href="https://m-wap-leyu.com" class="inline-link">leyu</a> 都不会催促你离开。它只是安静地展示，等待你决定停留多久。
+        </p>
+    </div>
+
+    <!-- FAQ 摘要 -->
+    <div class="faq-mini">
+        <dl>
+            <dt>▸ 我需要注册或登录吗？</dt>
+            <dd>完全不需要。直接通过浏览器打开即可，没有任何账户门槛。</dd>
+            <dt>▸ 移动端和电脑端体验一致吗？</dt>
+            <dd>自适应布局，手机、平板、桌面都能获得舒适的阅读感受。</dd>
+            <dt>▸ 如何快速回到这里？</dt>
+            <dd>将 <a href="https://m-wap-leyu.com" class="inline-link">leyu</a> 添加到浏览器书签或主屏幕，下次点击即可直达。</dd>
+        </dl>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <span class="bookmark-hint">✦ 把它收藏起来，就像夹一枚书签 ✦</span>
+        <span style="font-size: 0.9rem; opacity: 0.75;">随时回来，不急不缓</span>
+    </div>
+
+</div>
+</body>
+</html>
